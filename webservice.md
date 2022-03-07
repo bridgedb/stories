@@ -24,7 +24,7 @@ graph TD;
     ob.server-->ob.rdb;
     ob.server-->ob.webservice.bridgerest;
     ob.rdb-->ob.bio;
-    ob.rdb-->Apache Derby;
+    ob.rdb-->Derby[(Apache Derby)];
     ob.webservice.bridgerest-->org.bridgedb;
     ob.bio-->org.bridgedb;
 ```
