@@ -15,3 +15,16 @@ sequenceDiagram
     BridgeDb Webservice->>Webserver (Nginx/Apache): text file
     Webserver (Nginx/Apache)->>Client: text file
 ```
+
+## Architecture
+
+```mermaid
+graph TD;
+    OpenAPI-->ob.server;
+    ob.server-->ob.rdb;
+    ob.server-->ob.webservice.bridgerest;
+    ob.rdb-->ob.bio;
+    ob.rdb-->Apache Derby;
+    ob.webservice.bridgerest-->org.bridgedb;
+    ob.bio-->org.bridgedb;
+```
