@@ -28,3 +28,22 @@ graph TD;
     ob.webservice.bridgerest-->org.bridgedb;
     ob.bio-->org.bridgedb;
 ```
+## A webservice call: Example
+
+```mermaid
+graph TD;
+    A[run start-server.sh script] -->|Starting Server on Port 8082| B(IDMapperService.java)
+    A[run start-server.sh script] -->|Parsing gdb.config| B(IDMapperService.java)
+    A[run start-server.sh script] -->|Loading Drivers| B(IDMapperService.java)
+    B(IDMapperService.java start) -->|DataSourceTxt.init| C(IDMapperService.java)
+    B(IDMapperService.java start) -->|connectGdbs method| C(IDMapperService.java)
+    C(IDMapperService.java) -->|createRoot to configure URLs| D(IDMapperService.java)
+    C(IDMapperService.java) -->|getGdbProvider| D(IDMapperService.java)
+    E(Client REST Request) -->|/Human/properties| F(Recognized URL Format: URL_PROPERTIES)
+    F(Recognized URL Format: URL_PROPERTIES) --> G(IDMapperResource.java)
+    G(IDMapperResource.java) -->|upon Request| H(doInit method)
+    H(doInit method) --> |urlDecode: get organism name| H(doInit method)
+    H(doInit method) -->|calls| J(initIDMappers method)
+    J(initIDMappers method) -->|getGdbProvider.getStack method| J(initIDMappers method)
+    J(initIDMappers method) -->|returns| K(response)
+```
